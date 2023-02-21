@@ -1,4 +1,13 @@
-# Projeto Prever Diabetes 
+# :bar_chart: MINERAÇÃO DE DADOS - MDAEL8 :minidisc:	
+<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/MineracaoDados.jpg" width="500" height="200" />
+
+## :mag: Repositorio de Projeto MDAEL8 Vinicius Santos
+### Esse Repositorio esta relacionado com a minha materia do IFSP Birigui de Mineração de dados ministrado pela Dr.Murilo Varges
+
+## :desktop_computer:  Projeto: PREVER DIABETES  :books:
+
+### Nesse projeto foi usada uma base de dados ppara prever diabetes e com algumas tecnicas que aprendemos em aula vamos manipular, classificar, processar entre outras que foi separado em 5 pastas sendo:
+
 
 # :large_orange_diamond: Andamento e Desenvolvimento da Disciplina 
 
