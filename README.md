@@ -45,16 +45,16 @@
 
 - [:heavy_check_mark:] Aula 01 - 09/02/2023 Obs: Apresentação do plano de aulas da disciplina. Introdução ao tema. 
 - [:heavy_check_mark:] Aula 02 - 16/02/2023 Obs: Pré-processamento de dados: Introdução ao pré-processamento, Limpeza de dados.
-- [] Aula 03 - 23/02/2023 Obs: Pré-processamento de dados: Redução de dados, Transformações de dados e Discretização. 
+- [:heavy_check_mark:] Aula 03 - 23/02/2023 Obs: Pré-processamento de dados: Redução de dados, Transformações de dados e Discretização. 
 
 
 ###  MES: MARÇO
 
-- [] Aula 04 - 02/03/2023 Obs: Análise descritiva de dados: Introdução.
-- [] Aula 05 - 09/03/2023 Obs: Analise descritiva de dados: O processo de análise descritiva de dados.
-- [] Aula 06 - 16/03/2023 Obs: Análise de grupos: Introdução e processo de agrupamento de dados;
-- [] Aula 07 - 23/03/2023 Obs: Análise de grupos: Algoritmos de agrupamentos.
-- [] Aula 08 - 30/03/2023 Obs: Classificação de dados: Introdução e processo de predição.
+- [:heavy_check_mark:] Aula 04 - 02/03/2023 Obs: Sem Aula, Problemas Medicos com o Docente.
+- [:heavy_check_mark:] Aula 05 - 09/03/2023 Obs: Analise descritiva de dados: O processo de análise descritiva de dados.
+- [:heavy_check_mark:] Aula 06 - 16/03/2023 Obs: Atividade Remota, Maratona de Programação;
+- [:heavy_check_mark:] Aula 07 - 23/03/2023 Obs: Análise de grupos: Algoritmos de agrupamentos.
+- [] Aula 08 - 30/03/2023 Obs: Apresentação Pacial das Atividades.
 
 ###  MES: ABRIL
 
