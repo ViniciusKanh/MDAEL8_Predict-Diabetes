@@ -16,7 +16,7 @@
 ### :white_medium_square: Processing
    Esta Pasta está dedicada aos algoritmos de Processamento, redução e transformação dos dados.
    
-<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/ProcessamentoDados.jpg" width="400" height="300" />
+<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/ProcessamentoDados.png" width="400" height="300" />
   
 ### :white_medium_square: Clustering
   Esta Pasta esta dedicadas .
@@ -26,17 +26,17 @@
 ### :white_medium_square: Classification
   Esta Pasta esta dedicadas .
 
-<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/Classifica%C3%A7%C3%A3o.png" width="400" height="300" />
+<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/Classification.png" width="400" height="300" />
 
 ### :white_medium_square: Regression
-  Esta Pasta esta dedicadas a.
+  Esta Pasta esta dedicadas ao meu mapa mental da disciplina.
 
 <img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/Regression.jpg" width="400" height="300" />
   
 ### :white_medium_square: Arquivos PDF's
-  Esta Pasta esta dedicadas aos arquivos em PDF com os relatorio de desenvolvimento do projeto e outros artigos apresentado pelo professor pertinente ao projeto.
+  Esta Pasta esta dedicadas .
   
- <img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/PDF.jpg" width="400" height="300" />
+ <img src="" width="400" height="300" />
    
 
 # :large_orange_diamond: Andamento e Desenvolvimento da Disciplina 
