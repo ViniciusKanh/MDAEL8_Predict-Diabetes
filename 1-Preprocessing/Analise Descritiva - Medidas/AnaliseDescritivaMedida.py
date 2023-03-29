@@ -41,13 +41,17 @@ def main():
     print("Segundo quartil (Mediana) de Glucose: {:.2f}".format(Q2_Glucose))
     print("Terceiro quartil de Glucose: {:.2f}".format(Q3_Glucose))
     print("\n-----------------------------------------\n")
-
+    
+    print("\nMedidas de Associação\n")
+    print('Covariância: \n{}\n'.format(df.cov())) # Covariância
+    print('\nCorrelação: \n{}'.format(df.corr())) # Correlação
+ 
     # Plota o histograma dos valores da coluna Glucose
-    plt.hist(df['Glucose'], bins=20)
-    plt.title('Distribuição de Glucose')
-    plt.xlabel('Glucose')
-    plt.ylabel('Frequência')
-    plt.show()
+    #plt.hist(df['Glucose'], bins=20)
+    #plt.title('Distribuição de Glucose')
+    #plt.xlabel('Glucose')
+    #plt.ylabel('Frequência')
+    #plt.show()
 
 if __name__ == '__main__':
     main()
