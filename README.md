@@ -53,15 +53,15 @@
 - [:heavy_check_mark:] Aula 04 - 02/03/2023 Obs: Sem Aula, Problemas Medicos com o Docente.
 - [:heavy_check_mark:] Aula 05 - 09/03/2023 Obs: Analise descritiva de dados: O processo de análise descritiva de dados.
 - [:heavy_check_mark:] Aula 06 - 16/03/2023 Obs: Atividade Remota, Maratona de Programação;
-- [:heavy_check_mark:] Aula 07 - 23/03/2023 Obs: Análise de grupos: Algoritmos de agrupamentos.
-- [] Aula 08 - 30/03/2023 Obs: Apresentação Pacial das Atividades.
+- [:heavy_check_mark:] Aula 07 - 23/03/2023 Obs: Desenvolvimento de projeto de mineração de dados.
+- [:heavy_check_mark:] Aula 08 - 30/03/2023 Obs: Apresentação dos trabalhos parciais.
 
 ###  MES: ABRIL
 
-- [] Aula 09 - 06/04/2023 Obs: Classificação de dados: Algoritmos de classificação e exemplo do processo de classificação.
-- [] Aula 10 - 13/04/2023 Obs: Estimação/Regressão: Introdução.
-- [] Aula 11 - 20/04/2023 Obs: Estimação/Regressão: Algoritmos de regressão e exemplo do processo de regressão.
-- [] Aula 12 - 27/04/2023 Obs: Desenvolvimento do projeto final da disciplina
+- [:heavy_check_mark:] Aula 09 - 06/04/2023 Obs: Apresentação dos trabalhos parciais.
+- [:heavy_check_mark:] Aula 10 - 13/04/2023 Obs: Análise de grupos: Algoritmos de agrupamentos.
+- [:heavy_check_mark:] Aula 11 - 20/04/2023 Obs: Classificação de dados: Introdução e processo de predição.
+- [:heavy_check_mark:] Aula 12 - 27/04/2023 Obs: Classificação de dados: Algoritmos de classificação e exemplo do processo de classificação.
 
 ###  MES: MAIO
 
