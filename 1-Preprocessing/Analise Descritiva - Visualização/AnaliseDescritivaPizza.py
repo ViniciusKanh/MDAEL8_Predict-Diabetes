@@ -13,8 +13,8 @@ def main():
 
     label = ['Diabeticas','Não Diabeticas']
     cores = ['r','b']
-    Diabeticas = df['Resultado'].value_counts()[1]
-    NaoDiabeticas = df['Resultado'].value_counts()[0]
+    Diabeticas = df[target].value_counts()[1]
+    NaoDiabeticas = df[target].value_counts()[0]
     total = Diabeticas + NaoDiabeticas
     y = np.array([Diabeticas, NaoDiabeticas])
     plt.pie(y , labels=label, colors=cores, autopct= lambda x: '{:.0f}'.format(x*y.sum()/100, startangle=90))

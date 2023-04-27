@@ -2,27 +2,23 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-df = pd.read_csv('0-Datasets/diabetesClear.data')
+def main():
+    # Faz a leitura do arquivo
+    input_file = '0-Datasets/diabetesClearGrafico.data'
+    names = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','idade','Resultado'] 
+    target = 'Resultado'
+    atributo = 'Número Gestações'
+    df = pd.read_csv(input_file,    # Nome do arquivo com dados
+                     names = names) # Nome das colunas  
 
 
-for coluna in df.columns:
-    # Histograma
-    plt.figure()
-    sns.histplot(data=df, x=coluna)
-    plt.title(f'Histograma da coluna {coluna}')
-    plt.savefig(f'historgrama_{coluna}.png')
-    plt.close()
+    df_dispersao =df[[target, atributo]]
+    df_dispersao = df_dispersao.groupby([target,atributo]).size().reset_index(name="tamanho")
+    fig = plt.figure()
+    ax = fig.add_axes([0,0,1.5,1.5])
 
-    # Gráfico de setores
-    plt.figure()
-    df[coluna].value_counts().plot(kind='pie')
-    plt.title(f'Gráfico de setores da coluna {coluna}')
-    plt.savefig(f'grafico_setores_{coluna}.png')
-    plt.close()
+    ax = sns.scatterplot(data=df_dispersao, x=target, y = atributo, size="tamanho", legend=False, sizes=(1000,10000))
+    plt.show()
 
-    # Dispersão  
-    plt.figure()
-    sns.scatterplot(data=df, x=coluna, y='Resultado')
-    plt.title(f'Dispersão da coluna {coluna} em relação à coluna alvo')
-    plt.savefig(f'dispersao_{coluna}.png')
-    plt.close()
+if __name__ == "__main__":
+    main()

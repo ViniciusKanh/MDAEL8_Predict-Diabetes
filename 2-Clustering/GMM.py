@@ -7,7 +7,9 @@ from sklearn.decomposition import PCA
 from sklearn.mixture import GaussianMixture
 from sklearn.metrics import silhouette_score
 from sklearn.metrics import silhouette_samples
+from scipy.stats import zscore
 import matplotlib.pyplot as plt
+import pandas as pd
 
 def show_digitsdataset(digits):
     fig = plt.figure(figsize=(6, 6))  # figure size in inches
@@ -19,7 +21,7 @@ def show_digitsdataset(digits):
         # label the image with the target value
         ax.text(0, 7, str(digits.target[i]))
 
-    #fig.show()
+    fig.show()
 
 def plot_samples(projected, labels, title):    
     fig = plt.figure()
@@ -33,25 +35,30 @@ def plot_samples(projected, labels, title):
     plt.title(title)
 
 def main():
-    #Load dataset Digits
-    digits = load_digits()
-    show_digitsdataset(digits)
-    
-    #Transform the data using PCA
+    input_file = '0-Datasets/diabetesClear.data'
+    names = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','Idade','Resultado']
+    features = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','Idade']
+    target = 'Resultado'
+    df = pd.read_csv(input_file,    # Nome do arquivo com dados
+                    names = names) # Nome das colunas
+        
+    normalized_df = (df[features] - df[features].min()) / (df[features].max() - df[features].min())
+    #normalized_df = df[features].apply(zscore)
+    #normalized_df = df[features] / (10 ** np.ceil(np.log10(df[features].abs().max())))
+
+    # Apply PCA to the normalized data
     pca = PCA(2)
-    projected = pca.fit_transform(digits.data)
-    print(pca.explained_variance_ratio_)
-    print(digits.data.shape)
-    print(projected.shape)    
-    plot_samples(projected, digits.target, 'Original Labels') 
+    projected = pca.fit_transform(normalized_df)
+
     
     #Applying sklearn GMM function
-    gm  = GaussianMixture(n_components=10).fit(projected)
+    gm  = GaussianMixture(n_components=2).fit(projected)
     print(gm.weights_)
     print(gm.means_)
     x = gm.predict(projected)
 
     #Visualize the results sklearn
+
     plot_samples(projected, x, 'Clusters Labels GMM')
 
     plt.show()

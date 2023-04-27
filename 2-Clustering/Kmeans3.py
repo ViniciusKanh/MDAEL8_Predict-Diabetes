@@ -65,48 +65,41 @@ def plot_samples(projected, labels, title):
 
  
 def main():
-    #Load dataset Digits
-    input_file = '0-Datasets/diabetesClear.data'
-    names = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','Idade','resultado'] 
-    features = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','Idade','resultado'] 
-    target = 'resultado'
-    digits = pd.read_csv(input_file,         # Nome do arquivo com dados #df =  data framing
+    input_file = '0-Datasets/dados_diabetes_normalizados.data'
+    names = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','Idade','Resultado'] 
+    features = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','Idade','Resultado'] 
+    target = 'Resultado'
+    df = pd.read_csv(input_file,         # Nome do arquivo com dados #df =  data framing
                      names = names,      # Nome das colunas 
                      usecols = features, # Define as colunas que serão  utilizadas
                      na_values='?')      # Define que ? será considerado valores ausentes
     
     
-    show_digitsdataset(digits)
-    
     #Transform the data using PCA
     pca = PCA(2)
-    projected = pca.fit_transform(digits)
+    projected = pca.fit_transform(df)
     print(pca.explained_variance_ratio_)
-    # print(digits.data.shape)
+    #print(df.data.shape)
     print(projected.shape)    
-    plot_samples(projected, digits.resultado, 'Original Labels')
- 
+    #plot_samples(projected, target, 'Original Labels')
+
     #Applying our kmeans function from scratch
-    labels = KMeans_scratch(projected,6,5)
-    
+    labels = KMeans_scratch(projected,2,5)
+
     #Visualize the results 
-    plot_samples(projected, digits.resultado, 'Clusters Sexo KMeans from scratch')
+    plot_samples(projected, labels, 'Clusters Labels KMeans from scratch')
 
     #Applying sklearn kemans function
-    kmeans = KMeans(n_clusters=6).fit(projected)
-    print("teste")
+    kmeans = KMeans(n_clusters=2).fit(projected)
     print(kmeans.inertia_)
-    print(projected)
     centers = kmeans.cluster_centers_
     score = silhouette_score(projected, kmeans.labels_)    
     print("For n_clusters = {}, silhouette score is {})".format(10, score))
 
     #Visualize the results sklearn
-    plot_samples(projected, kmeans.labels_, 'TESTE Clusters Labels KMeans from sklearn')
+    plot_samples(projected, kmeans.labels_, 'Clusters Labels KMeans from sklearn')
 
     plt.show()
     
- 
-
 if __name__ == "__main__":
-     main()
+    main()
