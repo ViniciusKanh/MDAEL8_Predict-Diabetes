@@ -12,8 +12,10 @@ from sklearn import datasets
 from sklearn.neighbors import KNeighborsClassifier
 from collections import Counter
 
+
+
 # Calculate distance between two points
-def minkowski_distance(a, b, p=1):    
+def minkowski_distance(a, b, p=2):    
     # Store the number of dimensions
     dim = len(a)    
     # Set initial distance to 0
@@ -123,7 +125,7 @@ def main():
     print("Total train samples: {}".format(X_train.shape[0]))
     print("Total test  samples: {}".format(X_test.shape[0]))
 
-    scaler = MinMaxScaler()
+    scaler = StandardScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
             
