@@ -21,6 +21,6 @@ df_norm = pd.DataFrame(X_norm, columns=X.columns)
 df_norm['Resultado'] = y
 
 # Salvar a base de dados normalizada em um novo arquivo csv
-df_norm.to_csv('dados_diabetes_normalizados.csv', index=False)
+df_norm.to_csv('dados_diabetes_normalizados menos valores faltantes.csv', index=False)
 
 

@@ -18,7 +18,7 @@ X = df.drop('Resultado', axis=1)
 y = df['Resultado']
 
 # normaliza as variáveis de entrada
-scaler = MinMaxScaler()
+scaler = StandardScaler()
 X_norm = scaler.fit_transform(X)
 
 # utiliza a seleção de variáveis RFE
@@ -79,6 +79,9 @@ plt.plot(x, y, color='red')
 plt.xlabel('Valor Real')
 plt.ylabel('Valor Previsto')
 plt.title('Gráfico de Dispersão e Regressão Linear')
+y_pred = regr.predict(X_test)
+abs_error = mean_absolute_error(y_pred, y_test)
+print('Erro absoluto no set de treino: %.2f' % abs_error)
 
 # exibe o gráfico
 plt.show()

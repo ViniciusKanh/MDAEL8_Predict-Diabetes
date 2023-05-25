@@ -24,7 +24,7 @@ def main():
     y = df.loc[:,[target]].values
 
     # Standardizing the features
-    X = StandardScaler().fit_transform(X)
+    X = MinMaxScaler().fit_transform(X)
     normalizedDf = pd.DataFrame(data = X, columns = features)
     normalizedDf = pd.concat([normalizedDf, df[[target]]], axis = 1)
     

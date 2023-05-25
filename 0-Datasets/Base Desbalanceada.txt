@@ -1,0 +1,42 @@
+Accuracy Scores:
+Neural Network: 0.70995670995671
+Decision Tree: 0.6536796536796536
+K-Nearest Neighbors: 0.7012987012987013
+Support Vector Machine: 0.7575757575757576
+
+
+F1 Scores:
+Neural Network: 0.5988023952095808
+Decision Tree: 0.5402298850574714
+K-Nearest Neighbors: 0.5306122448979592
+Support Vector Machine: 0.6363636363636365
+
+
+Confusion Matrix:
+Neural Network:
+[[114  37]
+ [ 30  50]]
+Decision Tree:
+[[104  47]
+ [ 33  47]]
+K-Nearest Neighbors:
+[[123  28]
+ [ 41  39]]
+Support Vector Machine:
+[[126  25]
+ [ 31  49]]
+
+
+Classification Report:
+Neural Network:
+              precision    recall  f1-score   support
+
+           0       0.79      0.75      0.77       151
+           1       0.57      0.62      0.60        80
+
+    accuracy                           0.71       231
+           1       0.66      0.61      0.64        80
+
+    accuracy                           0.76       231
+   macro avg       0.73      0.72      0.73       231
+weighted avg       0.75      0.76      0.76       231

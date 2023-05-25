@@ -35,7 +35,7 @@ def main():
     
     columns_missing_value = df.columns[df.isnull().any()]
     print(columns_missing_value)
-    method = 'median' # number or median or mean or mode
+    method = 'mean' # number or median or mean or mode
     
     for c in columns_missing_value:
         UpdateMissingValues(df, c, method)
