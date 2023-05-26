@@ -2,12 +2,12 @@
 #Loading the required modules 
 import numpy as np
 from scipy.spatial.distance import cdist 
-from sklearn.datasets import load_digits
 from sklearn.decomposition import PCA
 from sklearn.mixture import GaussianMixture
 from sklearn.metrics import silhouette_score
 from sklearn.metrics import silhouette_samples
 from scipy.stats import zscore
+from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import matplotlib.pyplot as plt
 import pandas as pd
 
@@ -34,10 +34,17 @@ def main():
     normalized_df = (df[features] - df[features].min()) / (df[features].max() - df[features].min())
     #normalized_df = df[features].apply(zscore)
     #normalized_df = df[features] / (10 ** np.ceil(np.log10(df[features].abs().max())))
+    
+     # Separating out the features
+    x = df.loc[:, features].values
+    
+    x = MinMaxScaler().fit_transform(x)
+    normalizedDf = pd.DataFrame(data = x, columns = features)
+    normalizedDf = pd.concat([normalizedDf, df[[target]]], axis = 1)
 
     # Apply PCA to the normalized data
     pca = PCA(2)
-    projected = pca.fit_transform(normalized_df)
+    projected = pca.fit_transform(normalizedDf)
 
     
     #Applying sklearn GMM function

@@ -11,6 +11,8 @@ from sklearn.metrics import confusion_matrix
 from sklearn import datasets
 from sklearn.neighbors import KNeighborsClassifier
 from collections import Counter
+from imblearn.over_sampling import SMOTE
+from tabulate import tabulate
 
 
 
@@ -118,14 +120,19 @@ def main():
 
     # Separating out the target
     y = df.loc[:,target]
-
+    
+    
     print("Total samples: {}".format(X.shape[0]))
 
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
     print("Total train samples: {}".format(X_train.shape[0]))
     print("Total test  samples: {}".format(X_test.shape[0]))
+    
+    oversample = SMOTE()
+    X_train_b, y_train_b = oversample.fit_resample(X_train,y_train)
 
-    scaler = StandardScaler()
+
+    scaler = MinMaxScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
             
@@ -161,6 +168,40 @@ def main():
     plot_confusion_matrix(cm, target_names, False, "Confusion Matrix - K-NN sklearn")      
     plot_confusion_matrix(cm, target_names, True, "Confusion Matrix - K-NN sklearn normalized" )  
     plt.show()
+    
+    # STEP 3 - Results tabulation
+    results = []
+    results.append(['Model', 'Accuracy', 'F1 Score'])
+    results.append(['K-NN from scratch', "{:.2f}%".format(accuracy), "{:.2f}%".format(f1)])
+
+    knn = KNeighborsClassifier(n_neighbors=5)
+    knn.fit(X_train_b, y_train_b)
+    y_hat_test_b = knn.predict(X_test)
+
+    accuracy_b = accuracy_score(y_test, y_hat_test_b)*100
+    f1_b = f1_score(y_test, y_hat_test_b, average='macro')
+
+    results.append(['K-NN with SMOTE', "{:.2f}%".format(accuracy_b), "{:.2f}%".format(f1_b)])
+
+    # Print results
+    print(tabulate(results, headers='firstrow'))
+    
+    # STEP 3 - Confusion matrix tabulation
+    cm_scratch = confusion_matrix(y_test, y_hat_test)
+    cm_smote = confusion_matrix(y_test, y_hat_test_b)
+
+    # Create headers for tabulation
+    headers = ['Model', 'Confusion Matrix']
+    model_names = ['K-NN from scratch', 'K-NN with SMOTE']
+
+    # Create data for tabulation
+    data = []
+    for model, cm in zip(model_names, [cm_scratch, cm_smote]):
+        cm_table = tabulate(cm, headers='keys', tablefmt='grid')
+        data.append([model, cm_table])
+
+    # Print confusion matrices
+    print(tabulate(data, headers=headers))
 
 
 if __name__ == "__main__":
