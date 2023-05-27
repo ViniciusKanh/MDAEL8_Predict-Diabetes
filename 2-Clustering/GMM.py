@@ -10,18 +10,26 @@ from scipy.stats import zscore
 from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import matplotlib.pyplot as plt
 import pandas as pd
+import seaborn as sns
+
 
 
 def plot_samples(projected, labels, title):    
-    fig = plt.figure()
+    fig = plt.figure(figsize=(10, 6))
     u_labels = np.unique(labels)
-    for i in u_labels:
-        plt.scatter(projected[labels == i , 0] , projected[labels == i , 1] , label = i,
-                    edgecolor='none', alpha=0.5, cmap=plt.cm.get_cmap('tab10', 10))
+    colors = sns.color_palette("husl", len(u_labels))
+
+    for i, color in zip(u_labels, colors):
+        plt.scatter(projected[labels == i , 0] , projected[labels == i , 1] , label = f'Cluster {i}',
+                    edgecolor='none', alpha=0.7, s=50, c=[color])
+    
     plt.xlabel('component 1')
     plt.ylabel('component 2')
     plt.legend()
     plt.title(title)
+
+    plt.show()
+
 
 def main():
     input_file = '0-Datasets/diabetesClear.data'
