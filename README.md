@@ -16,7 +16,7 @@
 ### :white_medium_square: Processing
    Esta Pasta está dedicada aos algoritmos de Processamento, redução e transformação dos dados.
    
-<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/ProcessamentoDados.png" width="400" height="300" />
+<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/ProcessamentoDados.jpg" width="400" height="300" />
   
 ### :white_medium_square: Clustering
   Esta Pasta esta dedicadas .
@@ -26,7 +26,7 @@
 ### :white_medium_square: Classification
   Esta Pasta esta dedicadas .
 
-<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/Classification.png" width="400" height="300" />
+<img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/Classifica%C3%A7%C3%A3o.png" width="400" height="300" />
 
 ### :white_medium_square: Regression
   Esta Pasta esta dedicadas ao meu mapa mental da disciplina.
@@ -36,7 +36,7 @@
 ### :white_medium_square: Arquivos PDF's
   Esta Pasta esta dedicadas .
   
- <img src="" width="400" height="300" />
+ <img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/PDF.jpg" width="400" height="300" />
    
 
 # :large_orange_diamond: Andamento e Desenvolvimento da Disciplina 
@@ -65,16 +65,15 @@
 
 ###  MES: MAIO
 
-- [] Aula 13 - 04/05/2023 Obs: Regras de associação: Introdução e processo de mineração de regras de associação.
-- [] Aula 14 - 11/05/2023 Obs: Regras de associação: Algoritmos para mineração de regras de associação e exemplo do processo de mineração de regras de associação.
-- [] Aula 15 - 18/05/2023 Obs: Avaliação Conteúdo teórico e prático apresentado na disciplina.
-- [] Aula 16 - 25/05/2023 Obs: Desenvolvimento do projeto final da disciplina.
+- [:heavy_check_mark:] Aula 13 - 04/05/2023 Obs: Regras de associação: Introdução e processo de mineração de regras de associação.
+- [:heavy_check_mark:] Aula 14 - 11/05/2023 Obs: Regras de associação: Algoritmos para mineração de regras de associação e exemplo do processo de mineração de regras de associação.
+- [:heavy_check_mark:] Aula 15 - 18/05/2023 Obs: Avaliação Conteúdo teórico e prático apresentado na disciplina.
+- [:heavy_check_mark:] Aula 16 - 25/05/2023 Obs: Desenvolvimento do projeto final da disciplina.
 
 
 ###  MES: JUNHO
 
-- [] Aula 17 - 01/06/2023 Obs: Desenvolvimento do projeto final da disciplina.
-- [] Aula 18 - 08/06/2023 Obs: Feriado Corus Christi
+- [] Aula 17 - 01/06/2023 Obs: Avaliação Final.
+- [] Aula 18 - 08/06/2023 Obs: Feriado Corus Christi.
 - [] Aula 19 - 15/06/2023 Obs: Apresentação dos trabalhos finais.
 - [] Aula 20 - 22/06/2023 Obs: Apresentação dos trabalhos finais.
-- [] Aula 21 - 29/06/2023 Obs: Apresentação dos trabalhos finais.
