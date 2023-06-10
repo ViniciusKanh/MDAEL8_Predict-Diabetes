@@ -9,6 +9,8 @@ from sklearn.metrics import silhouette_score
 from sklearn.metrics import silhouette_samples
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+
  
 #Defining our kmeans function from scratch
 def KMeans_scratch(x,k, no_of_iterations):
@@ -76,14 +78,16 @@ def main():
                      na_values='?')      # Define que ? será considerado valores ausentes
     
     
-    show_digitsdataset(digits)
-    
-    #Transform the data using PCA
+    # Normalizar os dados usando Min-Max scaler
+    scaler = MinMaxScaler()
+    normalized_digits = scaler.fit_transform(digits)
+
+    # Aplicar o PCA aos dados normalizados
     pca = PCA(2)
-    projected = pca.fit_transform(digits)
+    projected = pca.fit_transform(normalized_digits)
     print(pca.explained_variance_ratio_)
-    # print(digits.data.shape)
-    print(projected.shape)    
+    print(projected.shape)
+
     plot_samples(projected, digits.resultado, 'Original Labels')
  
     #Applying our kmeans function from scratch

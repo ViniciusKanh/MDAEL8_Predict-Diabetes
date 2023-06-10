@@ -5,8 +5,8 @@ import seaborn as sns
 # Lendo o arquivo csv
 def main():
     # Faz a leitura do arquivo
-    input_file = '0-Datasets/diabetesClearGrafico.data'
-    names = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','idade','Resultado'] 
+    input_file = '0-Datasets/diabetesClear.data'
+    names = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','Idade','Resultado'] 
     target = 'Resultado'
     df = pd.read_csv(input_file,    # Nome do arquivo com dados
                      names = names) # Nome das colunas  
@@ -14,7 +14,7 @@ def main():
     # Criando uma nova coluna 'idade_categoria'
     binsIdade = [29, 40, 50, 60, 77] # limites das categorias
     labelsIdade = ['29-39', '40-49', '50-59', '60-77'] # rótulos das categorias
-    df['conjunto_idade'] = pd.cut(df['idade'], bins=binsIdade, labels=labelsIdade)
+    df['conjunto_idade'] = pd.cut(df['Idade'], bins=binsIdade, labels=labelsIdade)
 
     # Criando uma nova coluna 'imc_categoria'
     binsImc = [0, 18.5, 25, 30, 35, 40] # limites das categorias
@@ -65,7 +65,7 @@ def main():
     plt.title('Distribuição de Resultados por Faixa Etária')
     plt.xlabel('Faixa Etária')
     plt.ylabel('Número de Pessoas')
-    plt.savefig('grafico_faixa_etaria.png')  # Salva o gráfico em um arquivo PNG
+    plt.show()
 
     # Criando gráfico de barras para a categoria 'imc_categoria'
     plt.figure(figsize=(10, 6))
@@ -73,7 +73,7 @@ def main():
     plt.title('Distribuição de Resultados por Categoria de IMC')
     plt.xlabel('Categoria de IMC')
     plt.ylabel('Número de Pessoas')
-    plt.savefig('grafico_categoria_imc.png')  # Salva o gráfico em um arquivo PNG
+    plt.show()
 
     # Criando gráfico de barras para a categoria 'insulina_categoria'
     plt.figure(figsize=(10, 6))
@@ -81,7 +81,7 @@ def main():
     plt.title('Distribuição de Resultados por Categoria de Insulina')
     plt.xlabel('Categoria de Insulina')
     plt.ylabel('Número de Pessoas')
-    plt.savefig('grafico_categoria_insulina.png')  # Salva o gráfico em um arquivo PNG
+    plt.show()
 
     # Criando gráfico de barras para a categoria 'glucose_categoria'
     plt.figure(figsize=(10, 6))
@@ -89,7 +89,7 @@ def main():
     plt.title('Distribuição de Resultados por Categoria de Glicemia de Jejum')
     plt.xlabel('Categoria de Glicemia de Jejum')
     plt.ylabel('Número de Pessoas')
-    plt.savefig('grafico_categoria_glicemia.png')  # Salva o gráfico em um arquivo PNG
+    plt.show()
 
     # Criando gráfico de barras para a categoria 'pressaoArterial_categoria'
     plt.figure(figsize=(10, 6))
@@ -97,15 +97,15 @@ def main():
     plt.title('Distribuição de Resultados por Categoria de Pressão Arterial')
     plt.xlabel('Categoria de Pressão Arterial')
     plt.ylabel('Número de Pessoas')
-    plt.savefig('grafico_categoria_pressao_arterial.png')  # Salva o gráfico em um arquivo PNG
-
+    plt.show()
+    
     # Criando gráfico de barras para a categoria 'expessura_pele_categoria'
     plt.figure(figsize=(10, 6))
     sns.countplot(data=df, x='expessura_pele_categoria', hue='Resultado')
     plt.title('Distribuição de Resultados por Categoria de Espessura de Pele')
     plt.xlabel('Categoria de Espessura de Pele')
     plt.ylabel('Número de Pessoas')
-    plt.savefig('grafico_categoria_expessura_pele.png')  # Salva o gráfico em um arquivo PNG
+    plt.show()
 
     # Criando gráfico de barras para a categoria 'numero_gestacoes_categoria'
     plt.figure(figsize=(10, 6))
@@ -113,7 +113,7 @@ def main():
     plt.title('Distribuição de Resultados por Categoria de Número de Gestações')
     plt.xlabel('Categoria de Número de Gestações')
     plt.ylabel('Número de Pessoas')
-    plt.savefig('grafico_categoria_numero_gestacoes.png')  # Salva o gráfico em um arquivo PNG
+    plt.show()
 
     # Criando gráfico de barras para a categoria 'funcao_pedigree_categoria'
     plt.figure(figsize=(10, 6))
@@ -121,26 +121,7 @@ def main():
     plt.title('Distribuição de Resultados por Categoria de Função Pedigree Diabete')
     plt.xlabel('Categoria de Função Pedigree Diabete')
     plt.ylabel('Número de Pessoas')
-    plt.savefig('grafico_categoria_funcao_pedigree.png')  # Salva o gráfico em um arquivo PNG
-
-    # Lista de todas as colunas do DataFrame
-    colunas = ['conjunto_idade', 'imc_categoria', 'insulina_categoria', 'glucose_categoria',
-            'pressao_arterial_categoria', 'expessura_pele_categoria', 'numero_gestacoes_categoria',
-            'funcao_pedigree_categoria']
-
-    # Loop for para criar os gráficos
-    for coluna1 in colunas:
-        for coluna2 in colunas:
-            if coluna1 != coluna2:  # Evita criar gráficos repetidos
-                # Criação do gráfico de barras
-                plt.figure(figsize=(10, 6))
-                sns.countplot(data=df, x=coluna1, hue=coluna2)
-                plt.title(f'Distribuição de Resultados por {coluna1} e {coluna2}')
-                plt.xlabel(coluna1)
-                plt.ylabel('Número de Pessoas')
-                plt.legend(title=coluna2)
-                plt.savefig(f'1-Preprocessing/Graficos/grafico_{coluna1}_e_{coluna2}.png')  # Salva o gráfico em um arquivo PNG
-                #plt.show()  # Mostra o gráfico
+    plt.show()
 
 
 if __name__ == "__main__":
