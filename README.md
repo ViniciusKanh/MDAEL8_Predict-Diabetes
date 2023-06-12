@@ -19,17 +19,17 @@
 <img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/ProcessamentoDados.jpg" width="400" height="300" />
   
 ### :white_medium_square: Clustering
-  Esta Pasta esta dedicadas .
+  Esta Pasta esta dedicadas aos algortmo de agrupamento da base de dados.
 
 <img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/Clustering.png" width="400" height="300" />
 
 ### :white_medium_square: Classification
-  Esta Pasta esta dedicadas .
+  Esta Pasta esta dedicadas aos algoritmos de classificacao da base de dados.
 
 <img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/Classifica%C3%A7%C3%A3o.png" width="400" height="300" />
 
 ### :white_medium_square: Regression
-  Esta Pasta esta dedicadas ao meu mapa mental da disciplina.
+  Esta Pasta esta dedicadas aos algoritmos de regressao para a base de dados.
 
 <img src="https://github.com/ViniciusKanh/MDAEL8_Predict-Diabetes/blob/main/img/Regression.jpg" width="400" height="300" />
   
