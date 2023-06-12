@@ -73,7 +73,7 @@
 
 ###  MES: JUNHO
 
-- [] Aula 17 - 01/06/2023 Obs: Avaliação Final.
-- [] Aula 18 - 08/06/2023 Obs: Feriado Corus Christi.
+- [:heavy_check_mark:] Aula 17 - 01/06/2023 Obs: Avaliação Final.
+- [:heavy_check_mark:] Aula 18 - 08/06/2023 Obs: Feriado Corus Christi.
 - [] Aula 19 - 15/06/2023 Obs: Apresentação dos trabalhos finais.
 - [] Aula 20 - 22/06/2023 Obs: Apresentação dos trabalhos finais.
