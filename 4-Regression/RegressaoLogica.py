@@ -15,7 +15,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 # Load the dataset
-input_file = '0-Datasets/dados_diabetes_normalizados menos valores faltantes.data'
+input_file = '0-Datasets/diabetesClear.data'
 names = ['Número Gestações','Glucose','pressao Arterial','Expessura da Pele','Insulina','IMC','Função Pedigree Diabete','Idade','Resultado']
 df = pd.read_csv(input_file, names=names)
 
@@ -28,7 +28,7 @@ print(check)
 X = df.drop(columns='Resultado')
 y = df['Resultado']
 
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=10)
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
 
 print('Dados de Treino: ', len(X_train))
 print('Dados de Teste: ', len(X_test))
