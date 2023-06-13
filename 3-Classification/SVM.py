@@ -8,8 +8,8 @@ from sklearn.preprocessing import StandardScaler,MinMaxScaler
 from sklearn.metrics import accuracy_score
 from sklearn.metrics import f1_score
 from sklearn.metrics import confusion_matrix
-from sklearn import datasets
 from sklearn.svm import SVC
+from imblearn.over_sampling import SMOTE
 
 def plot_confusion_matrix(cm, classes,
                           normalize=False,
@@ -46,23 +46,6 @@ def plot_confusion_matrix(cm, classes,
     plt.ylabel('True label')
     plt.xlabel('Predicted label')    
 
-def load_dataset(dataset='diabetes'):        
-    if dataset == 'iris':
-        # Load iris data and store in dataframe
-        iris = datasets.load_iris()
-        names = iris.target_names
-        df = pd.DataFrame(data=iris.data, columns=iris.feature_names)
-        df['target'] = iris.target
-    elif dataset == 'diabetes':
-        # Load cancer data and store in dataframe
-        diabetes = datasets.load_diabetes()
-        names = diabetes.target_names
-        df = pd.DataFrame(data=diabetes.names, columns=diabetes.feature_names)
-        df['target'] = diabetes.target
-    
-    print(df.head())
-    return names, df
-
 
 def main():
     #load dataset
@@ -86,27 +69,31 @@ def main():
 
     print("Total samples: {}".format(X.shape[0]))
     # Split the data - 75% train, 25% test
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=0)
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=0)
     print("Total train samples: {}".format(X_train.shape[0]))
     print("Total test  samples: {}".format(X_test.shape[0]))
      
+    smote = SMOTE()
+    X_train, y_train = smote.fit_resample(X_train, y_train)
 
     # Scale the X data using Z-score
+   # Normalizar os dados
     scaler = MinMaxScaler()
     X_train = scaler.fit_transform(X_train)
     X_test = scaler.transform(X_test)
 
 
-    svm = SVC(kernel='poly', C=1) # poly, rbf, linear
+
+    svm = SVC(kernel='rbf', C=1) # poly, rbf, linear
     # training using train dataset
     svm.fit(X_train, y_train)
     # get support vectors
-    print(svm.support_vectors_)
+   # print(svm.support_vectors_)
     # get indices of support vectors
-    print(svm.support_)
+   # print(svm.support_)
     # get number of support vectors for each class
-    print("Qtd Support vectors: ")
-    print(svm.n_support_)
+   # print("Qtd Support vectors: ")
+    #print(svm.n_support_)
     # predict using test dataset
     y_hat_test = svm.predict(X_test)
 
@@ -118,10 +105,12 @@ def main():
     print("F1 Score SVM from sk-learn: {:.2f}%".format(f1))
     # Get test confusion matrix    
 
-    cm = confusion_matrix(y_test, y_hat_test)        
-    plot_confusion_matrix(cm, target_names, False, "Confusion Matrix - SVM sklearn")      
-    plot_confusion_matrix(cm, target_names, True, "Confusion Matrix - SVM sklearn normalized" )  
-    plt.show()
+    # cm = confusion_matrix(y_test, y_hat_test)        
+    # plot_confusion_matrix(cm, target_names, False, "Confusion Matrix - SVM sklearn")      
+    # plot_confusion_matrix(cm, target_names, True, "Confusion Matrix - SVM sklearn normalized" )  
+    # plt.show()
+    
+    
 
 if __name__ == "__main__":
     main()
