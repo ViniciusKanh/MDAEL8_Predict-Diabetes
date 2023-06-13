@@ -1,9 +1,11 @@
-import numpy as np
-import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.preprocessing import MinMaxScaler
 import pandas as pd
+import numpy as np
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import StandardScaler,MinMaxScaler
+from sklearn.neural_network import MLPClassifier
+from sklearn.metrics import accuracy_score, f1_score
+import matplotlib.pyplot as plt
+from tabulate import tabulate
 
 # Carregar o conjunto de dados
 input_file = '0-Datasets/diabetesClear.data'
@@ -13,44 +15,100 @@ target = 'Resultado'
 df = pd.read_csv(input_file, names=names)
 
 # Dados de exemplo
-X = df[features].values
-y = df[target].values
+X = df.iloc[:, :-1].values
+y = df.iloc[:, -1].values
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.3, random_state=42)
 
 # Normalização Min-Max
 scaler = MinMaxScaler()
-X_scaled = scaler.fit_transform(X)
+X_train = scaler.fit_transform(X_train)
+X_test = scaler.transform(X_test)
 
-# Instanciando o classificador KNN com distância euclidiana
-knn = KNeighborsClassifier(n_neighbors=3, metric='euclidean')
+model = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=1000, random_state=42)
+model.fit(X_train, y_train)
 
-# Ajustando o modelo aos dados normalizados
-knn.fit(X_scaled, y)
+y_pred = model.predict(X_test)
 
-# Pontos para predição
-x_min, x_max = X_scaled[:, 0].min() - 0.1, X_scaled[:, 0].max() + 0.1
-y_min, y_max = X_scaled[:, 1].min() - 0.1, X_scaled[:, 1].max() + 0.1
-xx, yy = np.meshgrid(np.arange(x_min, x_max, 0.01), np.arange(y_min, y_max, 0.01))
-Z = knn.predict(np.c_[xx.ravel(), yy.ravel(), np.zeros_like(xx.ravel()), np.zeros_like(xx.ravel()), np.zeros_like(xx.ravel()), np.zeros_like(xx.ravel()), np.zeros_like(xx.ravel()), np.zeros_like(xx.ravel())])
+accuracy = accuracy_score(y_test, y_pred)
+f1 = f1_score(y_test, y_pred)
 
-# Plotando os resultados em 3D
-Z = Z.reshape(xx.shape)
-fig = plt.figure()
-ax = fig.add_subplot(111, projection='3d')
-ax.contourf(xx, yy, Z, alpha=0.4)
-ax.scatter(X_scaled[:, 0], X_scaled[:, 1], X_scaled[:, 2], c=y, s=20, edgecolor='k')
-ax.set_xlabel('Número de Gestação (normalizado)')
-ax.set_ylabel('Glucose (normalizado)')
-ax.set_zlabel('pressao Arterial (normalizado)')
-ax.set_title('Classificação utilizando KNN com normalização Min-Max e distância euclidiana')
+metrics = [['Acurácia', accuracy], ['F1-Score', f1]]
+print(tabulate(metrics, headers=['Métrica', 'Valor']))
 
-# Legenda para as classes
-diabetico_patch = plt.scatter([], [], c='r', s=20, edgecolor='k')
-nao_diabetico_patch = plt.scatter([], [], c='b', s=20, edgecolor='k')
-ax.legend((diabetico_patch, nao_diabetico_patch), ('Diabético', 'Não Diabético'), loc='upper right')
+fig, ax = plt.subplots(figsize=(8, 6))
+ax.set_title('Rede Neural')
+ax.set_xlabel('Camada')
+ax.set_ylabel('Neurônio')
+ax.grid(True)
 
-# Legenda para a região de classificação
-classificacao_patch = plt.Rectangle((0, 0), 1, 1, fc='yellow', alpha=0.4)
-nao_classificacao_patch = plt.Rectangle((0, 0), 1, 1, fc='purple', alpha=0.4)
-ax.legend((classificacao_patch, nao_classificacao_patch), ('Região Classificada como Não Diabético', 'Região Classificada como Diabético'), loc='lower left')
+# Coordenadas dos neurônios
+neuron_coords = []
 
+# Coordenadas das entradas
+input_coords = []
+
+# Coordenadas das saídas
+output_coords = []
+
+# Camadas ocultas
+for i, layer_sizes in enumerate(model.hidden_layer_sizes):
+    layer_label = f'Camada Oculta {i+1}'
+    neurons = layer_sizes
+    
+    # Posição da camada oculta no gráfico
+    x = i + 0.5
+    
+    for j in range(neurons):
+        y = (neurons - 1) / 2 - j
+        neuron_coords.append((x, y))
+        
+        if i == 0:
+            input_coords.append((x-0.5, y))
+        elif i == len(model.hidden_layer_sizes) - 1:
+            output_coords.append((x+0.5, y))
+        
+        # Plot do neurônio
+        circle = plt.Circle((x, y), radius=0.1, facecolor='white', edgecolor='black')
+        ax.add_patch(circle)
+        ax.annotate(f'Neurônio {j+1}\n{layer_label}', (x, y), ha='center', va='center')
+
+# Camada de saída
+output_label = 'Camada de Saída'
+neurons = model.n_outputs_
+
+# Posição da camada de saída no gráfico
+x = len(model.hidden_layer_sizes) + 1.5
+
+for j in range(neurons):
+    y = (neurons - 1) / 2 - j
+    neuron_coords.append((x, y))
+    output_coords.append((x, y))
+    
+    # Plot do neurônio
+    circle = plt.Circle((x, y), radius=0.1, facecolor='white', edgecolor='black')
+    ax.add_patch(circle)
+    ax.annotate(f'Neurônio {j+1}\n{output_label}', (x, y), ha='center', va='center')
+
+# Conexões entre neurônios
+for i, (x, y) in enumerate(neuron_coords):
+    if i < len(neuron_coords) - neurons:
+        outputs = neuron_coords[i+neurons:]
+    else:
+        outputs = output_coords
+    
+    for output in outputs:
+        ax.arrow(x, y, output[0]-x, output[1]-y, head_width=0.05, head_length=0.1, fc='black', ec='black')
+
+# Legendas das entradas e saídas
+for coord in input_coords:
+    ax.annotate('Entrada', coord, ha='center', va='center', xytext=(-1, 0), textcoords='offset points')
+
+for coord in output_coords:
+    ax.annotate('Saída', coord, ha='center', va='center', xytext=(1, 0), textcoords='offset points')
+
+plt.xlim(-1, len(model.hidden_layer_sizes) + 2)
+plt.ylim(-(max(neurons for neurons in model.hidden_layer_sizes) - 1) / 2 - 1, (max(neurons for neurons in model.hidden_layer_sizes) - 1) / 2 + 1)
+plt.gca().invert_yaxis()
+plt.tight_layout()
 plt.show()
