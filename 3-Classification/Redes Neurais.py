@@ -25,13 +25,15 @@ scaler = MinMaxScaler()
 X_train = scaler.fit_transform(X_train)
 X_test = scaler.transform(X_test)
 
-model = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=1000, random_state=42)
+model = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=1000, random_state=42, solver='adam', activation='relu')
 model.fit(X_train, y_train)
 
 y_pred = model.predict(X_test)
 
 accuracy = accuracy_score(y_test, y_pred)
 f1 = f1_score(y_test, y_pred)
+
+
 
 metrics = [['Acurácia', accuracy], ['F1-Score', f1]]
 print(tabulate(metrics, headers=['Métrica', 'Valor']))

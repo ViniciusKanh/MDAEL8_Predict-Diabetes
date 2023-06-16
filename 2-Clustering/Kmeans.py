@@ -97,7 +97,7 @@ def main():
     plot_samples(projected, digits.resultado, 'Clusters Sexo KMeans from scratch')
 
     #Applying sklearn kemans function
-    kmeans = KMeans(n_clusters=6).fit(projected)
+    kmeans = KMeans(n_clusters=2).fit(projected)
     print("teste")
     print(kmeans.inertia_)
     print(projected)

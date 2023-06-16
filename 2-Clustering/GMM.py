@@ -61,11 +61,14 @@ def main():
     print(gm.means_)
     x = gm.predict(projected)
 
+    # Calculate silhouette score
+    silhouette_avg = silhouette_score(projected, x)
+    print("Silhouette Score:", silhouette_avg)
+
     #Visualize the results sklearn
-
     plot_samples(projected, x, 'Clusters Labels GMM')
-
     plt.show()
+    #Visualize the results sklearn
 
 if __name__ == "__main__":
     main()
