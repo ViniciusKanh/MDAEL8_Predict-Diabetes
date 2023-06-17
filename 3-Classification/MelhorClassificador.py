@@ -67,7 +67,7 @@ svm_precision = precision_score(y_test, svm_predictions, average='macro')
 svm_confusion_matrix = confusion_matrix(y_test, svm_predictions)
 
 # Redes Neurais
-rna_classifier = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=1000, random_state=42)
+rna_classifier = MLPClassifier(hidden_layer_sizes=(10, 10), max_iter=1000, random_state=42, solver='adam', activation='relu')
 rna_classifier.fit(X_train, y_train)
 rna_predictions = rna_classifier.predict(X_test)
 
